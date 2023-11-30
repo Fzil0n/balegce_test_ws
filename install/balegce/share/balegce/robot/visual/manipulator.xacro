@@ -1,0 +1,347 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- <xacro:macro name="base" params="">
+        <visual>
+            <origin xyz="${PROPELLER_2_VISUAL['position']}" rpy="${PROPELLER_2_VISUAL['orientation']}"/>
+            <geometry>
+                <mesh filename=""/>
+            </geometry>
+            <material name="propeller_2_color">
+                <color rgba="${PROPELLER_2_VISUAL['color']}"/>
+            </material>
+        </visual>
+    </xacro:macro> -->
+
+    <xacro:macro name="leg_visual" params="">
+        <visual>
+            <origin xyz="${LEG_VISUAL['position']}" rpy="${LEG_VISUAL['orientation']}"/>
+            <geometry>
+                <mesh filename="file://$(find ${description_package})/meshes/leg.stl"/>
+            </geometry>
+            <material name="leg_color">
+                <color rgba="${LEG_VISUAL['color']}"/>
+            </material>
+        </visual>
+    </xacro:macro>
+
+    <xacro:macro name="leg_inertial" params="">
+        <inertial>
+            <origin xyz="${LEG_INERTIAL['com']}"/>
+            <mass value="${LEG_INERTIAL['mass']}"/>
+            <inertia
+                ixx = "${LEG_INERTIAL['inertia']['xx']}"
+                ixy = "${LEG_INERTIAL['inertia']['xy']}"
+                ixz = "${LEG_INERTIAL['inertia']['xz']}"
+                iyy = "${LEG_INERTIAL['inertia']['yy']}"
+                iyz = "${LEG_INERTIAL['inertia']['yz']}"
+                izz = "${LEG_INERTIAL['inertia']['zz']}"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="leg_collision">
+        <collision>
+            <origin xyz="${LEG_COLLISION['position']}" rpy="${LEG_COLLISION['orientation']}"/>
+            <geometry>
+                <box size="${LEG_COLLISION['size']}"/>
+            </geometry>
+        </collision>
+    </xacro:macro>
+
+    <xacro:macro name="body_visual" params="">
+        <visual>
+            <origin xyz="${BODY_VISUAL['position']}" rpy="${BODY_VISUAL['orientation']}"/>
+            <geometry>
+                <mesh filename="file://$(find ${description_package})/meshes/body.stl"/>
+            </geometry>
+            <material name="body_color">
+                <color rgba="${BODY_VISUAL['color']}"/>
+            </material>
+        </visual>
+    </xacro:macro>
+
+    <xacro:macro name="body_inertial" params="">
+        <inertial>
+            <origin xyz="${BODY_INERTIAL['com']}"/>
+            <mass value="${BODY_INERTIAL['mass']}"/>
+            <inertia
+                ixx = "${BODY_INERTIAL['inertia']['xx']}"
+                ixy = "${BODY_INERTIAL['inertia']['xy']}"
+                ixz = "${BODY_INERTIAL['inertia']['xz']}"
+                iyy = "${BODY_INERTIAL['inertia']['yy']}"
+                iyz = "${BODY_INERTIAL['inertia']['yz']}"
+                izz = "${BODY_INERTIAL['inertia']['zz']}"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="body_collision">
+        <collision>
+            <origin xyz="${BODY_COLLISION['position']}" rpy="${BODY_COLLISION['orientation']}"/>
+            <geometry>
+                <box size="${BODY_COLLISION['size']}"/>
+            </geometry>
+        </collision>
+    </xacro:macro>
+
+    <xacro:macro name="reactionwheel_visual" params="">
+        <visual>
+            <origin xyz="${REACTIONWHEEL_VISUAL['position']}" rpy="${REACTIONWHEEL_VISUAL['orientation']}"/>
+            <geometry>
+                <mesh filename="file://$(find ${description_package})/meshes/reactionwheel.stl"/>
+            </geometry>
+            <material name="reactionwheel_color">
+                <color rgba="${REACTIONWHEEL_VISUAL['color']}"/>
+            </material>
+        </visual>
+    </xacro:macro>
+
+    <xacro:macro name="reactionwheel_inertial" params="">
+        <inertial>
+            <origin xyz="${REACTIONWHEEL_INERTIAL['com']}"/>
+            <mass value="${REACTIONWHEEL_INERTIAL['mass']}"/>
+            <inertia
+                ixx = "${REACTIONWHEEL_INERTIAL['inertia']['xx']}"
+                ixy = "${REACTIONWHEEL_INERTIAL['inertia']['xy']}"
+                ixz = "${REACTIONWHEEL_INERTIAL['inertia']['xz']}"
+                iyy = "${REACTIONWHEEL_INERTIAL['inertia']['yy']}"
+                iyz = "${REACTIONWHEEL_INERTIAL['inertia']['yz']}"
+                izz = "${REACTIONWHEEL_INERTIAL['inertia']['zz']}"/>
+        </inertial>
+    </xacro:macro>
+    
+    <xacro:macro name="reactionwheel_collision">
+        <collision>
+            <origin xyz="${REACTIONWHEEL_COLLISION['position']}" rpy="${REACTIONWHEEL_COLLISION['orientation']}"/>
+            <geometry>
+                <box size="${REACTIONWHEEL_COLLISION['size']}"/>
+            </geometry>
+        </collision>
+    </xacro:macro>
+
+    <xacro:macro name="propeller_1_visual" params="">
+        <visual>
+            <origin xyz="${PROPELLER_1_VISUAL['position']}" rpy="${PROPELLER_1_VISUAL['orientation']}"/>
+            <geometry>
+                <mesh filename="file://$(find ${description_package})/meshes/propeller_1.stl"/>
+            </geometry>
+            <material name="propeller_1_color">
+                <color rgba="${PROPELLER_1_VISUAL['color']}"/>
+            </material>
+        </visual>
+    </xacro:macro>
+
+    <xacro:macro name="propeller_2_visual" params="">
+        <visual>
+            <origin xyz="${PROPELLER_2_VISUAL['position']}" rpy="${PROPELLER_2_VISUAL['orientation']}"/>
+            <geometry>
+                <mesh filename="file://$(find ${description_package})/meshes/propeller_2.stl"/>
+            </geometry>
+            <material name="propeller_2_color">
+                <color rgba="${PROPELLER_2_VISUAL['color']}"/>
+            </material>
+        </visual>
+    </xacro:macro>
+
+    <xacro:macro name="propeller_inertial" params="">
+        <inertial>
+            <origin xyz="${PROPELLER_INERTIAL['com']}"/>
+            <mass value="${PROPELLER_INERTIAL['mass']}"/>
+            <inertia
+                ixx = "${PROPELLER_INERTIAL['inertia']['xx']}"
+                ixy = "${PROPELLER_INERTIAL['inertia']['xy']}"
+                ixz = "${PROPELLER_INERTIAL['inertia']['xz']}"
+                iyy = "${PROPELLER_INERTIAL['inertia']['yy']}"
+                iyz = "${PROPELLER_INERTIAL['inertia']['yz']}"
+                izz = "${PROPELLER_INERTIAL['inertia']['zz']}"/>
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="propeller_collision">
+        <collision>
+            <origin xyz="${PROPELLER_COLLISION['position']}" rpy="${PROPELLER_COLLISION['orientation']}"/>
+            <geometry>
+                <box size="${PROPELLER_COLLISION['size']}"/>
+            </geometry>
+        </collision>
+    </xacro:macro>
+
+    <!-- <xacro:macro name="base" params=""> -->
+    <xacro:macro name="base_offset" params="">
+        <joint name="base" type="fixed">
+            <parent link="base"/>
+            <child link="leg"/>
+            <origin xyz="${BASE['position']}" rpy="${BASE['orientation']}"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="joint_base_x" params="">
+        <joint name="joint_base_x" type="${JOINT_BASE_X['types']}">
+            <parent link="brickSolid"/>
+            <child link="leg"/>
+            <origin xyz="${JOINT_BASE_X['position']}" rpy="${JOINT_BASE_X['orientation']}"/> 
+            <axis xyz="1 0 0"/>
+            <limit 
+                lower="${JOINT_BASE_X['lower']}" 
+                upper="${JOINT_BASE_X['upper']}" 
+                velocity="${JOINT_BASE_X['velocity']}" 
+                effort="${JOINT_BASE_X['effort']}"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="joint_base_y" params="">
+        <joint name="joint_base_y" type="${JOINT_BASE_Y['types']}">
+            <parent link="brickSolid"/>
+            <child link="leg"/>
+            <origin xyz="${JOINT_BASE_Y['position']}" rpy="${JOINT_BASE_Y['orientation']}"/> 
+            <axis xyz="0 1 0"/>
+            <limit 
+                lower="${JOINT_BASE_Y['lower']}" 
+                upper="${JOINT_BASE_Y['upper']}" 
+                velocity="${JOINT_BASE_Y['velocity']}" 
+                effort="${JOINT_BASE_Y['effort']}"/>
+        </joint>
+    </xacro:macro>
+
+
+    <xacro:macro name="joint_body" params="">
+        <joint name="joint_body" type="${JOINT_BODY['types']}">
+            <parent link="leg"/>
+            <child link="body"/>
+            <origin xyz="${JOINT_BODY['position']}" rpy="${JOINT_BODY['orientation']}"/> 
+            <axis xyz="0 0 1"/>
+            <limit 
+                lower="${JOINT_BODY['lower']}" 
+                upper="${JOINT_BODY['upper']}" 
+                velocity="${JOINT_BODY['velocity']}" 
+                effort="${JOINT_BODY['effort']}"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="joint_wheel" params="">
+        <joint name="joint_wheel" type="${JOINT_WHEEL['types']}">
+            <parent link="body"/>
+            <child link="reactionwheel"/>
+            <origin xyz="${JOINT_WHEEL['position']}" rpy="${JOINT_WHEEL['orientation']}"/> 
+            <axis xyz="0 0 1"/>
+            <limit 
+                lower="${JOINT_WHEEL['lower']}" 
+                upper="${JOINT_WHEEL['upper']}" 
+                velocity="${JOINT_WHEEL['velocity']}" 
+                effort="${JOINT_WHEEL['effort']}"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="joint_propeller_1" params="">
+        <joint name="joint_propeller_1" type="${JOINT_PROPELLER_1['types']}">
+            <parent link="body"/>
+            <child link="propeller_1"/>
+            <origin xyz="${JOINT_PROPELLER_1['position']}" rpy="${JOINT_PROPELLER_1['orientation']}"/> 
+            <axis xyz="0 0 1"/>
+            <limit 
+                velocity="${JOINT_PROPELLER_1['velocity']}" 
+                effort="${JOINT_PROPELLER_1['effort']}"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="joint_propeller_2" params="">
+        <joint name="joint_propeller_2" type="${JOINT_PROPELLER_2['types']}">
+            <parent link="body"/>
+            <child link="propeller_2"/>
+            <origin xyz="${JOINT_PROPELLER_2['position']}" rpy="${JOINT_PROPELLER_2['orientation']}"/> 
+            <axis xyz="0 0 1"/>
+            <limit 
+                velocity="${JOINT_PROPELLER_2['velocity']}" 
+                effort="${JOINT_PROPELLER_2['effort']}"/>
+        </joint>
+    </xacro:macro>
+
+
+<!-- BASE BOX -->
+    <xacro:macro name="brickSolid" params="">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.2 0.2 0.0"/>
+            </geometry>
+            <material name="link_color_brickSolid">
+                <color rgba="1 0.2 0.2 1"/>
+            </material>
+        </visual>
+    </xacro:macro>
+
+    <xacro:macro name="rigidTransform" params="">
+        <joint name="rigidTransform_base_to_brickSolid" type="fixed">
+            <origin xyz="0 0 0.00" rpy="0 0 0"/>
+            <parent link="base"/>
+            <child link="brickSolid"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:macro name="revoluteJoint" params="">
+        <joint name="revoluteJoint" type="revolute">
+            <origin xyz="0 0 0.00" rpy="0 0 0"/>
+            <parent link="brickSolid"/>
+            <child link="leg"/>
+            <axis xyz="${JOINT_BASE['revolute_joint']}"/>     
+            <limit 
+                lower="-3.14152" 
+                upper="3.14152" 
+                velocity="1000.0" 
+                effort="1000.0"/>     
+        </joint>
+    </xacro:macro>
+
+    <!-- Visual with dynamics propoties -->
+    <xacro:macro name="balegce" params="">
+        <link name="base"/>
+
+        <link name="brickSolid">
+            <xacro:brickSolid />
+        </link>
+
+        <link name="leg">
+            <xacro:leg_visual />
+            <xacro:leg_inertial />
+            <xacro:leg_collision />
+        </link>
+
+        <link name="body">
+            <xacro:body_visual />
+            <xacro:body_inertial />
+            <xacro:body_collision />
+        </link>
+
+
+        <link name="reactionwheel">
+            <xacro:reactionwheel_visual />
+            <xacro:reactionwheel_inertial />
+            <xacro:reactionwheel_collision />
+        </link>
+
+        <link name="propeller_1">
+            <xacro:propeller_1_visual />
+            <xacro:propeller_inertial />
+            <xacro:propeller_collision />
+        </link>
+
+        <link name="propeller_2">
+            <xacro:propeller_2_visual />
+            <xacro:propeller_inertial />
+            <xacro:propeller_collision />
+        </link>
+
+        <!-- <xacro:base/> -->
+        <!-- <xacro:base_offset/> -->
+        <xacro:rigidTransform/>
+
+        <xacro:revoluteJoint/>
+        <!-- <xacro:joint_base_x/>
+        <xacro:joint_base_y/> -->
+        <xacro:joint_body/>
+        <xacro:joint_wheel/>
+        <xacro:joint_propeller_1/>
+        <xacro:joint_propeller_2/>
+
+    </xacro:macro>
+
+</robot>
